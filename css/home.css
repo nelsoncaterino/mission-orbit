@@ -13,9 +13,9 @@
    --status-warning: #D15B47;
   --status-inactive: #E0E0E0;
   --border-color: #EAEAEA;
-  
+
 }
-}
+
 body{
     background-color: var(--color-main);
 
@@ -40,4 +40,5 @@ body{
         box-shadow: none;
         background-color: var(--color-button);
     }
+}
 }
