@@ -1,44 +1,268 @@
-*{
-    padding: 0%;
-    margin: 0%;
-}
-:root{
-    --color-main: #F5F2E8;
-    --color-txt-button: white;  
-  --accent-primary: #006549;
-  --accent-light: #A3C5B5; 
-  --text-primary: #1D1D1D;     
-  --text-secondary: #5A5A5A; 
-  --status-success: #2E6F40; 
-   --status-warning: #D15B47;
-  --status-inactive: #E0E0E0;
-  --border-color: #EAEAEA;
+/* 1. Imports de polices (au tout début du fichier) */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* 2. Reset des marges et paddings */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body{
+/* 3. Variables globales */
+:root {    
+    --color-main: #F8F9FA;      
+    --color-text-main: #1A202C;  
+    --color-txt-button: #FFFFFF;
+    --accent-primary: #191970;   
+    --accent-light: #D4AF37;     
+    --text-primary: #1A202C;     
+    --text-secondary: #4A5568;   
+    --status-success: #2F855A;   
+    --status-warning: #DD6B20;   
+    --status-inactive: #A0AEC0;  
+    --border-color: #E2E8F0;    
+    --square-color: red;
+    --line-color: #CBD5E1;
+    --light-gray: #e0e0e042;      
+
+    
+    /* Polices */
+    --font-principal: 'Playfair Display', serif;
+    --font-text: 'Lora', serif;
+    --font-pre: 'Courier Prime', monospace;
+}
+
+body {
     background-color: var(--color-main);
-
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
-#navbar{
-    nav{
-        background-color: var(--color-button);
-        ul{
-            li{ 
-                display: inline-flex;
-                flex-direction: row;
-                justify-items: end               
+
+/* --- HOVER DES LIENS --- */
+a {
+    text-decoration: none;
+    position: relative;
+    color: var(--color-text-main);
+
+    &::after {
+        position: absolute;
+        content: '';
+        left: 0;
+        width: 100%;
+        height: 1px;
+        bottom: -2px;
+        background-color: var(--color-text-main);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.5s ease-out;
+    } 
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+/* --- NAVIGATION HEADER --- */
+#navbar nav {
+    background-color: var(--color-main);
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    padding: 1.5rem 2.5rem;
+    position: relative;
+
+    .bloc-logo {
+        display: flex;
+        align-items: center; 
+        gap: 0.8rem; 
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid var(--color-text-main);
+            width: 7ch;
+            height: 4.8ch;
+            border-radius: 100%;
+
+            p {
+                font-family: var(--font-text);
+                font-weight: 600;
+                color: var(--color-text-main);
+                font-size: 1.5rem;
+                line-height: 1;
+            }
+
+            .red_square {
+                background-color: var(--square-color);
+                width: 6px;
+                height: 6px;
+                border-radius: 10%;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+        }
+
+        h4 {
+            font-family: var(--font-principal);
+            font-size: 1.5rem;
+            line-height: 1;
+            margin: 0;
+        }
+
+        pre.centre {
+            font-family: var(--font-pre);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
         }
     }
-}
-#principal{
-    button{
-        color: var(--color-txt-button );
-        border-radius: 0.4rem;
-        font-size: 1rem;
-        padding: 0.5rem;
-        box-shadow: none;
-        background-color: var(--color-button);
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        li { 
+            color: var(--color-text-main);
+        }
+    }
+
+    .ligne {
+        position: absolute;
+        bottom: 0;
+        left: 5%;
+        border-bottom: 1px solid var(--line-color);
+        width: 90%;
     }
 }
+/* --- SECTION PRINCIPALE --- */
+#principal {
+
+    padding: 0 2rem;
+
+    pre {
+        display: flex;
+        margin-top: 5rem;
+        padding-bottom: 2vh;
+        font-family: var(--font-pre);
+    }
+    h1 {
+        margin-top: 1rem;
+        max-width: 40dvh;
+        font-family: var(--font-principal);
+        i{
+            color: var(--accent-primary);
+        }
+    }
+
+    p {
+        margin-top: 1rem;
+        max-width: 650px;
+        font-family: var(--font-text);
+    }
+        svg{
+    width: 50dvh;
+    background-color: var(--light-gray);
+    border-radius: 23dvh 23dvh 0dvh 0dvh;
+    display: flex;
+    height: 25rem;
+    justify-self: end;
+    margin-top: -22dvh;
+    margin-left: auto;        
+}
+    button {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.8rem 1.5rem;
+        border: 1px solid var(--color-text-main);
+        border-radius: 0.25rem;
+        margin-top: 2rem;
+        background-color: var(--status-warning);
+        cursor: pointer;
+        margin-top: -5dvh;
+
+        a {
+            display: inline-block;
+        }
+    } 
+    .prototype {
+        margin-top: 2rem;
+    }
+}
+
+/* --- SECTION MISSIONS --- */
+#missions {
+    padding: 2rem;
+
+    .feuille {
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+        color: #F8F9FA;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    #vos_missions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+        margin-top: 1rem;
+        
+        .card {
+            display: flex; 
+            flex-direction: column; 
+            flex: 1;
+            max-width: 450px;
+            height: 380px;
+            border-radius: 1.5rem;
+            background-color: var(--line-color);
+            overflow: hidden;
+            border: 2px solid var(--color-text-main);
+        }
+
+        .card-head {
+            width: 100%;
+            height: 65%;
+            
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                object-fit: cover;
+            }
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            padding: 1.2rem; 
+            height: 35%;
+            color: #ffffff;
+
+            .card-title {
+                margin-bottom: 0.2rem;
+                font-size: 1.1rem;
+                color: var(--color-text-main);
+                font-weight: bolder;
+            }
+            .card-text {
+                margin: 0;
+                font-size: 0.9rem;
+                opacity: 0.9;
+                color: var(--color-text-main);
+            }
+        }
+    }
+    
 }
