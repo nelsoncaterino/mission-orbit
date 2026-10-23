@@ -9,23 +9,23 @@
 }
 
 /* 3. Variables globales */
-:root {    
-    --color-main: #F8F9FA;      
-    --color-text-main: #1A202C;  
+:root {
+    --color-main: #F8F9FA;
+    --color-text-main: #1A202C;
     --color-txt-button: #FFFFFF;
-    --accent-primary: #191970;   
-    --accent-light: #D4AF37;     
-    --text-primary: #1A202C;     
-    --text-secondary: #4A5568;   
-    --status-success: #2F855A;   
-    --status-warning: #DD6B20;   
-    --status-inactive: #A0AEC0;  
-    --border-color: #E2E8F0;    
+    --accent-primary: #191970;
+    --accent-light: #D4AF37;
+    --text-primary: #1A202C;
+    --text-secondary: #4A5568;
+    --status-success: #2F855A;
+    --status-warning: #DD6B20;
+    --status-inactive: #A0AEC0;
+    --border-color: #E2E8F0;
     --square-color: red;
     --line-color: #CBD5E1;
-    --light-gray: #e0e0e042;      
+    --light-gray: #e0e0e042;
 
-    
+
     /* Polices */
     --font-principal: 'Playfair Display', serif;
     --font-text: 'Lora', serif;
@@ -42,38 +42,22 @@ a {
     text-decoration: none;
     position: relative;
     color: var(--color-text-main);
-
-    &::after {
-        position: absolute;
-        content: '';
-        left: 0;
-        width: 100%;
-        height: 1px;
-        bottom: -2px;
-        background-color: var(--color-text-main);
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.5s ease-out;
-    } 
-    &:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
 }
 
 /* --- NAVIGATION HEADER --- */
 #navbar nav {
     background-color: var(--color-main);
-    display: flex; 
+    display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     padding: 1.5rem 2.5rem;
     position: relative;
 
     .bloc-logo {
         display: flex;
-        align-items: center; 
-        gap: 0.8rem; 
+        align-items: center;
+        gap: 0.8rem;
+
         .logo {
             display: flex;
             align-items: center;
@@ -126,7 +110,7 @@ a {
         margin: 0;
         padding: 0;
 
-        li { 
+        li {
             color: var(--color-text-main);
         }
     }
@@ -134,12 +118,14 @@ a {
     .ligne {
         position: absolute;
         bottom: 0;
-        left: 5%;
+        left: auto;
         border-bottom: 1px solid var(--line-color);
         width: 90%;
     }
 }
+
 /* --- SECTION PRINCIPALE --- */
+
 #principal {
 
     padding: 0 2rem;
@@ -150,30 +136,34 @@ a {
         padding-bottom: 2vh;
         font-family: var(--font-pre);
     }
+
     h1 {
         margin-top: 1rem;
         max-width: 40dvh;
         font-family: var(--font-principal);
-        i{
+
+        i {
             color: var(--accent-primary);
         }
     }
 
     p {
         margin-top: 1rem;
-        max-width: 650px;
+        max-width: 50dvh;
         font-family: var(--font-text);
     }
-        svg{
-    width: 50dvh;
-    background-color: var(--light-gray);
-    border-radius: 23dvh 23dvh 0dvh 0dvh;
-    display: flex;
-    height: 25rem;
-    justify-self: end;
-    margin-top: -22dvh;
-    margin-left: auto;        
-}
+
+    svg {
+        width: 50dvh;
+        background-color: var(--light-gray);
+        border-radius: 23dvh 23dvh 0dvh 0dvh;
+        display: flex;
+        height: 25rem;
+        justify-self: end;
+        margin-top: -22dvh;
+        margin-left: auto;
+    }
+
     button {
         display: inline-flex;
         align-items: center;
@@ -188,7 +178,8 @@ a {
         a {
             display: inline-block;
         }
-    } 
+    }
+
     .prototype {
         margin-top: 2rem;
     }
@@ -197,6 +188,7 @@ a {
 /* --- SECTION MISSIONS --- */
 #missions {
     padding: 2rem;
+    position: relative;
 
     .feuille {
         font-size: 0.8rem;
@@ -216,10 +208,10 @@ a {
         gap: 1.5rem;
         margin-bottom: 4rem;
         margin-top: 1rem;
-        
+
         .card {
-            display: flex; 
-            flex-direction: column; 
+            display: flex;
+            flex-direction: column;
             flex: 1;
             max-width: 450px;
             height: 380px;
@@ -232,7 +224,7 @@ a {
         .card-head {
             width: 100%;
             height: 65%;
-            
+
             img {
                 display: block;
                 width: 100%;
@@ -245,8 +237,8 @@ a {
         .card-body {
             display: flex;
             flex-direction: column;
-            justify-content: center; 
-            padding: 1.2rem; 
+            justify-content: center;
+            padding: 1.2rem;
             height: 35%;
             color: #ffffff;
 
@@ -256,6 +248,7 @@ a {
                 color: var(--color-text-main);
                 font-weight: bolder;
             }
+
             .card-text {
                 margin: 0;
                 font-size: 0.9rem;
@@ -264,5 +257,199 @@ a {
             }
         }
     }
-    
+
+}
+
+/* --- CORRECTION CARD 1 (Mise en page verticale) --- */
+.card-1 {
+    margin-top: 15dvh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* Rétabli en colonne pour correspondre au head/body vertical */
+    margin-top: 5vh;
+    width: 40%;
+    max-width: 350px;
+    height: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1.5rem;
+    background-color: var(--line-color);
+    overflow: hidden;
+    border: 2px solid var(--color-text-main);
+}
+
+.card-1 .card-head {
+    width: 100%;
+    height: 65%;
+    display: flex;
+
+    img {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        object-fit: cover;
+    }
+}
+
+.card-1 .card-body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.2rem;
+    height: 35%;
+
+    .card-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.2rem;
+        font-size: 1.1rem;
+        color: var(--color-text-main);
+        font-weight: bolder;
+    }
+
+    .card-text {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--color-text-main);
+    }
+}
+
+/* --- CORRECTION CARD 2 (Mise en page verticale conservée) --- */
+.card-2 {
+    margin-bottom: 15dvh;
+    display: flex;
+    flex-direction: column;
+    /* Votre structure initiale est conservée */
+    justify-content: center;
+    margin-top: 5vh;
+    max-width: 80dvh;
+    height: 18dvh;
+    border-radius: 1.5rem;
+    background-color: var(--line-color);
+    border: 2px solid var(--color-text-main);
+    overflow: hidden;
+    /* Évite que l'image ne dépasse des arrondis */
+}
+
+.card-2 .card-head {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.2rem;
+
+
+    width: 100%;
+    height: 80%;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.card-2 .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2.5rem;
+    justify-content: center;
+    height: 45%;
+
+    .card-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.2rem;
+        font-size: 1rem;
+        color: var(--color-text-main);
+        font-weight: bolder;
+    }
+
+    .card-text {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--color-text-main);
+    }
+
+}
+
+.ligne-bas {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 1.5rem;
+    left: auto;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid var(--line-color);
+
+}
+
+#briefing_et_consignes {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    padding: 0 auto;
+    margin-right: 0;
+    margin-left: 0;
+
+    pre {
+        margin-left: 5dvh;
+        margin-top: 1rem;
+
+    }
+
+    .equipe {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 50dvh;
+        margin-top: 5rem;
+
+
+    }
+
+    .consignes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        margin-top: 5rem;
+    }
+        details{
+            max-width: 800dvh;
+        }
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2dvh;
+    margin-top: 5rem;
+
+    .gauhe {
+        p {
+            text-align: left;
+        }
+    }
+
+    .centre {
+        p {
+                color: var(--accent-light);
+        }
+    }
+
+    .droite {
+        p {
+            text-align: right;
+        }
+    }
 }
