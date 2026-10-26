@@ -240,7 +240,6 @@ a {
             justify-content: center;
             padding        : 1.2rem;
             height         : 35%;
-            color          : #ffffff;
 
             .card-title {
                 margin-bottom: 0.2rem;
@@ -259,146 +258,81 @@ a {
     }
 
 }
-
-/* --- CORRECTION CARD 1 (Mise en page verticale) --- */
-.card-1 {
-    margin-top      : 15dvh;
-    display         : flex;
-    justify-content : space-around;
-    flex-direction  : column;
-    position: relative !important;
-    margin-top      : 5vh;
-    width           : 40%;
-    max-width       : 350px;
-    height          : 380px;
-    margin-left     : auto !important;
-    margin-right    : auto !important;
-    border-radius   : 1.5rem;
-    background-color: var(--line-color);
-    overflow        : hidden;
-    border          : 2px solid var(--color-text-main);
-}
-
-.card-1 .card-head {
-    width  : 100%;
-    height : 65%;
+ /* Mission en Mouvement */
+#mission_en_mouvement{
+  
+  .container-card{
     display: flex;
-
-    img {
-        width     : 100%;
-        height    : 100%;
-        opacity   : 1;
-        object-fit: cover;
-    }
-}
-
-.card-1 .card-body {
-
-    display        : flex;
-    flex-direction : column;
     justify-content: center;
-    padding        : 1.2rem;
-    height         : 35%;
+    padding : 5rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
 
-    .card-title {
-        display        : flex;
-        justify-content: center;
-        margin-bottom  : 0.2rem;
-        font-size      : 1.1rem;
-        color          : var(--color-text-main);
-        font-weight    : bolder;
+  }
+
+  .card {
+            display         : inline-flex;
+            flex-direction  : column;
+            flex            : 1;
+            max-width       : 450px;
+            height          : 380px;
+            border-radius   : 1.5rem;
+            background-color: var(--line-color);
+            overflow        : hidden;
+            border          : 2px solid var(--color-text-main);
+            ;
+        }
+
+        .card-head {
+            width : 100%;
+            height: 100%;
+        }
+
+        .card-body {
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            padding        : 5rem;
+            height         : 35%;
+
+            .card-title {
+                margin-bottom: 0.2rem;
+                font-size    : 1.1rem;
+                color        : var(--color-text-main);
+                font-weight  : bolder;
+            }
+
+            .card-text {
+                margin   : 0;
+                font-size: 0.9rem;
+                opacity  : 0.9;
+                color    : var(--color-text-main);
+            }
+        }
+    
+
     }
 
-    .card-text {
-        display        : flex;
-        justify-content: center;
-        margin         : 0;
-        font-size      : 0.9rem;
-        color          : var(--color-text-main);
-    }
-}
-
-/* --- CORRECTION CARD 2 (Mise en page verticale conservée) --- */
-.card-2 {
-    margin-bottom   : 15dvh;
-    display         : flex;
-    flex-direction  : column;
-    justify-content : space-around;
-    position: static !important;
-    margin-top      : 5vh;
-    margin-left     : auto !important;
-    margin-right    : auto !important;
-    max-width       : 80dvh;
-    height          : 10dvh;
-    border-radius   : 1.5rem;
-    background-color: var(--line-color);
-    border          : 2px solid var(--color-text-main);
-    /* Évite que l'image ne dépasse des arrondis */
-}
-
-.card-2 .card-head {
-
+.ligne-bas {
     display        : flex;
-    flex-direction : column;
-    align-items: flex-end;
     justify-content: center;
-    text-align: center;
-
-    width : 100%;
-    height: 80%;
-
-    img {
-        display   : block;
-        width     : 100%;
-        height    : 100%;
-        object-fit: cover;
-    }
-}
-
-.card-2 .card-body {
-    display        : flex;
-    flex-direction : column;
-    padding        : 1rem 2.5rem;
-    justify-content: center;
-    height         : 45%;
-
-    .card-title {
-        display        : flex;
-        justify-content: center;
-        margin-bottom  : 0.2rem;
-        font-size      : 1rem;
-        color          : var(--color-text-main);
-        font-weight    : bolder;
-    }
-
-    .card-text {
-        display        : flex;
-        justify-content: center;
-        margin         : 0;
-        font-size      : 0.85rem;
-        color          : var(--color-text-main);
-    }
+    position       : relative;
+    bottom         : 1.5rem;
+    left           : auto;
+    width          : 100%;
+    height         : 1px;
+    border-bottom  : 1px solid var(--line-color);
 
 }
-
-    .ligne-bas {
-        display        : flex;
-        justify-content: center;
-        position       : relative;
-        bottom         : 1.5rem;
-        left           : auto;
-        width          : 100%;
-        height         : 1px;
-        border-bottom  : 1px solid var(--line-color);
-
-    }
 
 #briefing_et_consignes {
-    display       : flex;
+    display      : flex;
     justify-items: center;
-    margin-right: 0;
-    margin-left: -10dvh;
-    max-width: 1000dvh;
+    margin-right : 0;
+    margin-left  : -10dvh;
+    max-width    : 1000dvh;
 
     pre {
         margin-left: 15dvh;
@@ -420,19 +354,19 @@ a {
         display        : flex;
         flex-direction : column;
         justify-content: center;
-        margin-top: 5rem; 
-        
+        margin-top     : 5rem;
+
         details {
-            max-width: 800rem;
+            max-width    : 800rem;
             margin-bottom: 1.5rem;
-            margin-top: 1.5rem ;
-            margin: 1;
-            margin-right: 10rem;
+            margin-top   : 1.5rem;
+            margin       : 1;
+            margin-right : 10rem;
 
         }
     }
 
-  
+
     .ligne-briefing {
         display        : flex;
         justify-content: center;
@@ -443,16 +377,16 @@ a {
         height         : 1px;
         border-bottom  : 1px solid var(--line-color);
 
-}
+    }
 
 }
 
 
 footer {
-        display        : flex;
-        justify-content: space-around;
-        font-size      : 2dvh;
-        margin-top     : 5rem;
+    display        : flex;
+    justify-content: space-around;
+    font-size      : 2dvh;
+    margin-top     : 5rem;
 
     .gauhe {
         p {

@@ -1,14 +1,174 @@
+<!-- cette page a été avec claude.ia  pour mieux comprendre et le but est de comprendre ce qu'il a fait pour pouvoir reproduire sans lui -->
+
+<!-- Merci de votre comprehension  -->
+
 <!DOCTYPE html>
-<html lang="fe-BE">
+<html lang="fr-BE">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit – Centre de contrôle</title>
+  <meta name="description" content="Centre de contrôle Orbit : suivez les missions et explorez l'espace.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    
-    <h1>Bienvenue au Centre de contrôle Orbit</h1>
+  <main class="hero" id="hero">
+    <img class="hero__bg" src=".././space/qimono-earth-1756274.jpg"
+         alt="La Terre vue depuis l'orbite, avec le lever du soleil sur l'horizon">
+    <canvas id="space" aria-hidden="true"></canvas>
+    <div class="orbit-wrap" aria-hidden="true"><div class="orbit"></div></div>
 
+    <!-- Réticule de visée -->
+    <div class="reticle" id="reticle" aria-hidden="true">
+      <span class="ring ring--a"></span>
+      <span class="ring ring--b"></span>
+      <span class="ring ring--c"></span>
+    </div>
+
+    <!-- Cadre HUD -->
+    <div class="hud" aria-hidden="true">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+    </div>
+
+    <aside class="gauge gauge--l" aria-hidden="true">
+      <span>ALT</span><div class="gauge__bar"><i></i></div>
+    </aside>
+    <aside class="gauge gauge--r" aria-hidden="true">
+      <span>VEL</span><div class="gauge__bar"><i></i></div>
+    </aside>
+
+    <header class="topbar">
+      <span>Orbit · MCC-01</span>
+      <span class="status"><i class="dot"></i> Systèmes en ligne</span>
+      <span id="clock">T+ 00:00:00</span>
+    </header>
+
+    <div class="hero__content" id="content">
+      <p class="eyebrow">Mission control</p>
+      <h1>Bienvenue au<br>Centre de contrôle <span>Orbit</span></h1>
+      <p class="lead" id="lead" data-text="Autorisation accordée. Systèmes nominaux. Prêt pour l'ascension."></p>
+      <a class="btn" id="launch-btn" href="./home.html">
+        <i class="btn__dot" aria-hidden="true"></i>
+        Lancer la mission
+        <span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <footer class="telemetry" aria-hidden="true">
+      <div><small>Altitude ISS</small><b id="t-alt">408 km</b></div>
+      <div><small>Vitesse</small><b id="t-vel">7,66 km/s</b></div>
+      <div><small>Orbite</small><b>LEO · 92 min</b></div>
+      <div><small>Position</small><b id="t-pos">50.85° N · 4.35° E</b></div>
+    </footer>
+  </main>
+
+  <!-- Séquence de lancement -->
+  <div class="launch" id="launch" aria-live="polite">
+    <div class="launch__count" id="count">3</div>
+    <p class="launch__label" id="count-label">Séquence de lancement</p>
+  </div>
+
+  <script>
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $ = id => document.getElementById(id);
+    const pad = n => String(n).padStart(2, '0');
+
+    /* Horloge T+ */
+    const start = Date.now();
+    setInterval(() => {
+      const s = Math.floor((Date.now() - start) / 1000);
+      $('clock').textContent = `T+ ${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`;
+    }, 1000);
+
+    /* Texte tapé façon terminal */
+    const lead = $('lead'), text = lead.dataset.text;
+    if (reduce) { lead.textContent = text; }
+    else {
+      let i = 0;
+      setTimeout(function type() {
+        lead.textContent = text.slice(0, ++i);
+        if (i < text.length) setTimeout(type, 38);
+      }, 1100);
+    }
+
+    /* Champ d'étoiles 3D + parallaxe + warp */
+    const cv = $('space'), ctx = cv.getContext('2d');
+    let W, H, DPR, mx = 0, my = 0, warp = false, speed = reduce ? 0 : 0.0007;
+    const stars = Array.from({ length: 280 }, () => ({
+      x: Math.random() * 2 - 1, y: Math.random() * 2 - 1, z: Math.random()
+    }));
+    function resize() {
+      DPR = Math.min(devicePixelRatio || 1, 2);
+      W = cv.width = innerWidth * DPR; H = cv.height = innerHeight * DPR;
+    }
+    resize(); addEventListener('resize', resize);
+
+    addEventListener('pointermove', e => {
+      mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5;
+      if (reduce) return;
+      const hero = $('hero').style;
+      hero.setProperty('--px', `${mx * -14}px`);
+      hero.setProperty('--py', `${my * -14}px`);
+    });
+
+    (function frame() {
+      speed += ((warp ? 0.05 : (reduce ? 0 : 0.0007)) - speed) * 0.04;
+      ctx.clearRect(0, 0, W, H);
+      const cx = W / 2, cy = H / 2, k = Math.min(W, H) * 0.9;
+      for (const s of stars) {
+        const pz = s.z;
+        s.z -= speed;
+        if (s.z <= 0.02) { s.x = Math.random() * 2 - 1; s.y = Math.random() * 2 - 1; s.z = 1; continue; }
+        const ox = mx * (1 - s.z) * 40 * DPR, oy = my * (1 - s.z) * 40 * DPR;
+        const x = cx + (s.x / s.z) * k * 0.35 + ox, y = cy + (s.y / s.z) * k * 0.35 + oy;
+        const a = Math.min(1, (1 - s.z) * 1.4);
+        ctx.strokeStyle = ctx.fillStyle = `rgba(220,235,255,${a})`;
+        if (warp) {
+          const px = cx + (s.x / pz) * k * 0.35 + ox, py = cy + (s.y / pz) * k * 0.35 + oy;
+          ctx.lineWidth = (1 - s.z) * 2.5 * DPR;
+          ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x, y); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.arc(x, y, (1 - s.z) * 1.6 * DPR + 0.3, 0, 6.283); ctx.fill();
+        }
+      }
+      requestAnimationFrame(frame);
+    })();
+
+    /* Télémétrie réelle de l'ISS (API publique, sans clé) */
+    async function iss() {
+      try {
+        const d = await (await fetch('https://api.wheretheiss.at/v1/satellites/25544')).json();
+        $('t-alt').textContent = `${Math.round(d.altitude)} km`;
+        $('t-vel').textContent = `${(d.velocity / 3600).toFixed(2).replace('.', ',')} km/s`;
+        $('t-pos').textContent = `${Math.abs(d.latitude).toFixed(2)}° ${d.latitude >= 0 ? 'N' : 'S'} · ${Math.abs(d.longitude).toFixed(2)}° ${d.longitude >= 0 ? 'E' : 'W'}`;
+      } catch (e) { /* on garde les valeurs par défaut */ }
+    }
+    iss(); setInterval(iss, 6000);
+
+    /* Séquence de lancement 3 · 2 · 1 · GO */
+    const btn = $('launch-btn'), count = $('count'), label = $('count-label');
+    const show = (v) => { count.textContent = v; count.classList.remove('pop'); void count.offsetWidth; count.classList.add('pop'); };
+    btn.addEventListener('click', e => {
+      if (reduce) return;
+      e.preventDefault();
+      $('launch').classList.add('on');
+      document.body.classList.add('launching');
+      warp = true;
+      let n = 3; show(n);
+      const t = setInterval(() => {
+        n--;
+        if (n > 0) show(n);
+        else {
+          clearInterval(t);
+          show('GO'); label.textContent = 'Ignition';
+          setTimeout(() => location.href = btn.href, 900);
+        }
+      }, 900);
+    });
+  </script>
 </body>
 </html>
