@@ -8,27 +8,27 @@
 }
 
 :root {
-    --color-main      : #f5f3eb;
-    --color-text-main : #1A202C;
-    --color-txt-button: #FFFFFF;
-    --accent-primary  : #191970;
-    --accent-light    : #D4AF37;
-    --text-primary    : #1A202C;
-    --text-secondary  : #4A5568;
-    --status-success  : #2F855A;
-    --status-warning  : #DD6B20;
-    --status-inactive : #A0AEC0;
-    --border-color    : #E2E8F0;
-    --square-color    : red;
-    --line-color      : #d7dccf;
-    --light-gray      : #e0e0e042;
-    --color-card      : white;
-    --background-online : #dfdfdf;
-    --footer-color: #4d4d4d;
+    --color-main       : #f5f3eb;
+    --color-text-main  : #1A202C;
+    --color-txt-button : #FFFFFF;
+    --accent-primary   : #191970;
+    --accent-light     : #D4AF37;
+    --text-primary     : #1A202C;
+    --text-secondary   : #4A5568;
+    --status-success   : #2F855A;
+    --status-warning   : #DD6B20;
+    --status-inactive  : #A0AEC0;
+    --border-color     : #E2E8F0;
+    --square-color     : red;
+    --line-color       : #d7dccf;
+    --light-gray       : #e0e0e042;
+    --color-card       : white;
+    --background-online: #dfdfdf;
+    --footer-color     : #4d4d4d;
 
 
     /* Polices */
-    --font-principal: 'Playfair Display', serif;    
+    --font-principal: 'Playfair Display', serif;
     --font-text     : 'Lora', serif;
     --font-pre      : 'Courier Prime', monospace;
 }
@@ -71,7 +71,7 @@ a {
 
             p {
                 font-family: var(--font-text);
-                font-weight: 900 ;
+                font-weight: 900;
                 color      : var(--color-text-main);
                 font-size  : 1.5rem;
                 line-height: 1;
@@ -116,58 +116,59 @@ a {
             color: var(--color-text-main);
         }
 
-    .en_ligne {
-        background-color: var(--background-online);
-        padding: 0;
-        margin: 0rem;
-        margin-left: 0.5rem;
-        box-sizing: border-box;
-        border-radius: 1.2dvh;
-        display: inline-flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        padding-left: 2dvh; 
-        gap: 1.5dvh; 
+        .en_ligne {
+            background-color: var(--background-online);
+            padding         : 0;
+            margin          : 0rem;
+            margin-left     : 0.5rem;
+            box-sizing      : border-box;
+            border-radius   : 1.2dvh;
+            display         : inline-flex;
+            flex-direction  : row-reverse;
+            align-items     : center;
+            padding-left    : 2dvh;
+            gap             : 1.5dvh;
 
-    p {
-        margin: 1dvh 1dvh 1dvh 0;
-        padding: 0; 
-    }
+            p {
+                margin : 1dvh 1dvh 1dvh 0;
+                padding: 0;
+            }
 
-    .rond {
-        border: 1px solid var(--color-text-main);
-        width: 1.5dvh;
-        height: 1.5dvh;
-        background-color: var(--background-online);
-        border-radius: 100%;
-        flex-shrink: 0;
-    }
-     .little_rond {
-        border: 1px solid var(--color-text-main);
-        width: 0.5rem;
-        height: 0.5rem;
-        margin-top: 0.2dvh;
-        margin-left: 0.2dvh;        
-        background-color: var(--background-online);
-        border-radius: 100%;
-        flex-shrink: 0;
-        background-color: var(--accent-primary);
-    }
-}
-            
-         }
+            .rond {
+                border          : 1px solid var(--color-text-main);
+                width           : 1.5dvh;
+                height          : 1.5dvh;
+                background-color: var(--background-online);
+                border-radius   : 100%;
+                flex-shrink     : 0;
+            }
 
+            .little_rond {
+                border          : 1px solid var(--color-text-main);
+                width           : 0.5rem;
+                height          : 0.5rem;
+                margin-top      : 0.2dvh;
+                margin-left     : 0.2dvh;
+                background-color: var(--background-online);
+                border-radius   : 100%;
+                flex-shrink     : 0;
+                background-color: var(--accent-primary);
+            }
         }
-        
 
-
-    .ligne {
-        position     : absolute;
-        bottom       : 0;
-        left         : auto;
-        border-bottom: 1px solid var(--line-color);
-        width        : 90%;
     }
+
+}
+
+
+
+.ligne {
+    position     : absolute;
+    bottom       : 0;
+    left         : auto;
+    border-bottom: 1px solid var(--line-color);
+    width        : 90%;
+}
 
 
 /* --- SECTION PRINCIPALE --- */
@@ -239,13 +240,14 @@ a {
 #missions {
     padding : 2rem;
     position: relative;
+   
 
-    .feuille {
+
+    .title {
         font-size     : 0.8rem;
         font-weight   : bold;
         letter-spacing: 0.05em;
         margin-bottom : 1.5rem;
-        color         : #F8F9FA;
         background    : none;
         border        : none;
         padding       : 0;
@@ -266,23 +268,121 @@ a {
             max-width       : 450px;
             height          : 380px;
             border-radius   : 1.5rem;
-            background-color:  var(--color-card);
+            background-color: var(--color-card);
             overflow        : hidden;
-            border          : 2px solid var(--color-text-main);
+            border          : 2px solid var(--line-color);
+            transition      : transform 0.3s ease, box-shadow 0.3s ease;
+            opacity         : 0.9;
+            animation: apparition 0.5s ease forwards;
+            
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
         }
 
         .card-head {
-            width : 100%;
-            height: 65%;
+            display        :flex;
+            flex-direction : column;
+            justify-content: start;
+            align-items    : start;
+            margin-left    : 1.5rem;
+            margin-top  : 1.5rem;
+            width          : 100%;
+            height         : 65%;
+            display        : flex;
+            top            : 0;
+            position       : relative;
+            
+            
 
-            img {
-                display   : block;
-                width     : 100%;
-                height    : 100%;
-                opacity   : 1;
-                object-fit: cover;
+            pre {
+                display    : flex;
+                flex-direction: row;
+                padding-top : 0.3dvh;
+                justify-content: center;
+                align-items: center;
+                margin-left: 0.5rem;
+                font-family: var(--font-pre);
+                font-size  : 1rem;
+                color      : var(--color-text-main);
+                margin     : 0;
+                margin-bottom : 4.5rem;
             }
+
+            span {
+                position       : absolute;
+                right          : 3rem;
+                display        : inline-flex;
+                flex-direction : column;
+                font-family    : var(--font-text);
+                font-size      : 0.8rem;
+                color          : var(--color-text-main);
+                border         : 1px solid var(--line-color);
+                padding        : 0.1rem 0.5rem;
+                border-radius  : 2.8rem;
+                font-weight    : 600;
+                margin-bottom     : 7.5rem;
+            }
+            .carrée {
+                display         : flex;
+                width           : 3.5rem;
+                height          : 3.5rem;
+                background-color: var(--line-color);
+                border-radius   : 30%;
+                border          : 1px solid var(--line-color);
+                position        : relative;
+                bottom          : 2.5rem;
+                left            : 0.5rem;
+                img {
+                    width : 2.5rem;
+                    height: 2.5rem;
+                    margin: auto;
+                    align-items: center;
+                    
+                }
+            }
+
+            h5 {
+                margin-top : 8rem;
+                font-family: var(--font-principal);
+                font-size  : 1.2rem;
+                color      : var(--color-text-main);
+                margin     : 0;
+
+
+            }
+
+
+
+            p {
+                font-family: var(--font-text);
+
+                font-size  : 0.9rem;
+                color      : var(--color-text-main);
+                margin     : 0;
+                max-width  : 16rem;
+                margin-top : 0.5rem;
+                /* font-size: large;
+                font-weight : bolder; */
+            }
+
+
+
+
         }
+
+        hr.ligne-mission {
+            display         : block;
+            position        : relative;
+            border          : none;
+            height          : 1px;
+            background-color: var(--line-color);
+            position        : relative;
+            top             : 1.5rem;
+
+        }
+
 
         .card-body {
             display        : flex;
@@ -290,27 +390,56 @@ a {
             justify-content: center;
             padding        : 1.2rem;
             height         : 35%;
+            
 
-            .card-title {
-                margin-bottom: 0.2rem;
-                font-size    : 1.1rem;
-                color        : var(--color-text-main);
-                font-weight  : bolder;
-            }
+        }
 
-            .card-text {
-                margin   : 0;
-                font-size: 0.9rem;
-                opacity  : 0.9;
-                color    : var(--color-text-main);
+        .card-title {
+            display      : block;
+            margin-bottom: 0.2rem;
+            font-size    : 1.1rem;
+            color        : var(--color-text-main);
+            font-weight  : bolder;
+        }
+
+
+        .card-text {
+            margin   : 0;
+            font-size: 0.9rem;
+            opacity  : 0.9;
+            color    : var(--color-text-main);
+            
+            P{
+                font-weight: 900;
+                font-size  : 20rem;
+                
             }
         }
     }
-
+     
 }
+
 
 /* Mission en Mouvement */
 #mission_en_mouvement {
+        .title {
+            font-size     : 0.8rem;
+            font-weight   : bold;
+            letter-spacing: 0.05em;
+            margin-bottom : 1rem;
+            background    : none;
+            border        : none;
+            padding       : 0;
+            margin-top    : -1rem;
+    }
+
+
+         h4 {
+            font-family: var(--font-principal); 
+            font-size  : 1.5rem;
+            line-height: 1;
+            margin     : 0;
+        }  
     kbd {
         border-radius   : 0.5dvh;
         color           : var(--color-text-main);
@@ -326,54 +455,76 @@ a {
         box-shadow      : 0 2px 0 #bbb;
     }
 
-}
+
 
 /* --- Le conteneur Flex horizontal --- */
 .container-card {
-    display: flex;
-    flex-direction: row; /* Force l'alignement côte à côte */
-    gap: 2rem;
-    padding: 5rem;
-    position: relative;
+    display        : flex;
+    flex-direction : row;
+    gap            : 2rem;
+    padding        : 5rem;
+    position       : relative;
     /* margin-right: auto; */
 }
 
-/* --- Style commun partagé par les deux types de cartes --- */
-.card-de-gauche, .card-de-droite {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    border-radius: 1.5rem;
-    background-color: var(--color-card, red); /* Vos cadres vont réapparaître ici */
-    border: 2px solid var(--color-text-main);
-    overflow: hidden;
+.card-de-gauche,
+.card-de-droite,
+.card-de-centre {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    border-radius   : 1.5rem;
+    background-color: var(--color-card);
+    border          : 2px solid var(--color-text-main);
+    overflow        : hidden;
 
     .card-head {
-        width: 100%;
+        display        : block;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : start;
+        margin-left    : 2rem;
+        margin-top     : auto;
+        width : 100%;
         height: 100%;
     }
 
+
     .card-body {
-        display: flex;
-        flex-direction: column;
+        display        : flex;
+        flex-direction : column;
         justify-content: space-around;
-        padding: 1.5rem;
-        height: 35%;
-        box-sizing: border-box;
+        padding        : 1.5rem;
+        height         : 35%;
+        box-sizing     : border-box;
     }
 }
 
-/* --- Vos tailles totalement indépendantes --- */
 .card-de-gauche {
-    width: 60rem;  /* Modifiez cette largeur pour la carte 1 */
+    width : 60rem;
     height: 27rem;
-     /* Modifiez cette hauteur pour la carte 1 */
+  
+}
+
+.card-de-centre {
+    display      : flex;
+    justify-self : center;
+    align-content: center;
+    align-items  : center;
+    align-items  : center;
+    width        : 30rem;
+    /* Modifiez cette largeur pour la carte 2 */
+    height       : 17rem;
+    /* Modifiez cette hauteur pour la carte 2 */
 }
 
 .card-de-droite {
-    width:  40rem;  /* Modifiez cette largeur pour la carte 2 */
-    height: 27rem; /* Modifiez cette hauteur pour la carte 2 */
+    width : 40rem;
+    /* Modifiez cette largeur pour la carte 2 */
+    height: 27rem;
+    /* Modifiez cette hauteur pour la carte 2 */
 }
+
 
 
 .ligne-bas {
@@ -386,7 +537,7 @@ a {
     height         : 1px;
     border-bottom  : 1px solid var(--line-color);
 }
-
+}
 #briefing_et_consignes {
     display: flex;
     margin : 0;
@@ -407,9 +558,9 @@ a {
         margin-top    : 2rem;
 
         h2 {
-            margin-top : 2.5rem;
-            margin-top : auto;
-            margin-left: auto;
+            margin-top  : 2.5rem;
+            margin-top  : auto;
+            margin-left : auto;
             margin-right: 0;
         }
 
@@ -483,16 +634,16 @@ footer {
     .gauche {
         p {
             text-align: left;
-            color: var(--footer-color);
-            font-size: smaller;
+            color     : var(--footer-color);
+            font-size : smaller;
         }
     }
 
     .centre {
         p {
             text-align: center;
-            color: var(--footer-color);
-            font-size: smaller;
+            color     : var(--footer-color);
+            font-size : smaller;
 
         }
     }
@@ -500,8 +651,8 @@ footer {
     .droite {
         a {
             text-align: right;
-            color: var(--footer-color);
-            font-size: smaller;
+            color     : var(--footer-color);
+            font-size : smaller;
 
         }
 

@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mission Orbit, projet pédagogique HTML et CSS à compléter avec des transitions et des animations." />
     <title>Orbit | Le Centre de contrôle</title>
     <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../mission-orbit/animations.css"></head>
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
 
 <body>
     <section id="navbar">
@@ -27,9 +30,9 @@
                 <div class="en_ligne">
                     <p>En ligne</p>
                     <div class="rond">
-                    <div class="little_rond">
-                </div>
-                </div>
+                        <div class="little_rond">
+                        </div>
+                    </div>
             </ul>
 
             <div class="ligne"></div>
@@ -69,63 +72,108 @@
         <button><a href="https://google.com"> le briefing ↗</a></button>
 
         <pre class="prototype">Prototype pédagogique - aucun lancement réel</pre>
-        
+
     </section>
 
     <section id="missions">
-        <pre class="feuille">01 / FEUILLE DE ROUTE</pre>
+        <pre class="title">01 / FEUILLE DE ROUTE</pre>
 
         <div id="vos_missions">
             <div class="card">
                 <div class="card-head">
-                    <!-- <img src="../img/photomat-automobile-3204789.jpg" alt="Description de la photo automobile"> -->
+                    <pre>01</pre>
+                    <span>Préparer</span>
+                    <div class="carrée">
+                    <img src="../img/eclaire.png" alt="sonde" class="sonde">
+                   </div>
+
+                    <h5>Établir la liaison</h5>
+                    <p>Vérifier les signaux avant de quitter la station</p>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Bonjour</h4>
-                    <p class="card-text">les copains</p>
+
+
+                    <hr class="ligne-mission">
+
+                    <h4 class="card-title"></h4>                    <p class="card-text">Lire lee briefing</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-head">
-                    <!-- <img src="../img/photomat-automobile-3204789.jpg" alt="Description de la photo automobile"> -->
+                    
+                    <pre>02</pre>
+                    <span>Explorer</span>
+                    <div class="carrée">
+                        <img src="../img/rond.png" alt="sonde" class="sonde">
+
+                    </div>
+
+                    <h5>Établir la liaison</h5>
+                    <p>Guider la sonde sur un parcoours à quatre étapes</p>
+
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Bonjour</h4>
-                    <p class="card-text">les copains</p>
+                  
+
+                    <hr class="ligne-mission">
+
+                    <h4 class="card-title"></h4>
+                    <p class="card-text">Voir le Parcours</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-head">
-                    <!-- <img src="../img/photomat-automobile-3204789.jpg" alt="Description de la photo automobile"> -->
+                    
+                    <pre>03</pre>
+                    <span>Observer</span>
+                      <div class="carrée">
+                        <img src="../img/line-menu-more-vertical.svg" alt="sonde" class="sonde">
+                      </div>
+
+                    <h5>Établir la liaison</h5>
+                    <p>Suivre l'activité et apprendre à maîtriser le temps</p>
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">Bonjour</h4>
-                    <p class="card-text">les copains</p>
+                  
+
+                    <hr class="ligne-mission">
+
+                    <h4 class="card-title"></h4>
+                    <p class="card-text">Voir le parcours</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="ligne-bas"></div>
-
 
     <section id="mission_en_mouvement">
-        <h4>La Missions en mouvement</h4>
-                  
-            <div class="controle">
-                <input type="checkbox">
-                contrôle à fonnecter en E7. Au Clavier : <kbd>Tab</kbd> puis <kbd>Espace</kbd>
-            </div> 
-            
-    <div class="container-card">
-        <div class="card-de-gauche">
+        <pre class="title">02 / TÉLÉMÉTRIE</pre>
+         <h2>La Missions en mouvement</h2>
+
+        <div class="control">
+            <div class="control_titre">
+              <input type="checkbox" id="control_titre" name="control_titre">
+                <label for="control_titre">Mettre les animation en pause</label>
+            <p>contrôle à fonnecter en E7. Au Clavier : <kbd>Tab</kbd> puis <kbd>Espace</kbd> . Pour rejouter les apparitions, rechargez la page</p>
+        </div>
+
+        <div class="container-card">
+            <div class="card-de-gauche">
                 <div class="card-head">
-                    <!-- <img src="../img/photomat-automobile-3204789.jpg" alt="Description de la photo automobile"> -->
+                    <div class="card-de-centre">
+                        <div class="card-head">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Bonjour</h4>
+                            <p class="card-text">les copains</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">Bonjour</h4>
+
                     <p class="card-text">les copains</p>
                 </div>
             </div>
@@ -133,16 +181,15 @@
 
             <div class="card-de-droite">
                 <div class="card-head">
-                    <!-- <img src="../img/photomat-automobile-3204789.jpg" alt="Description de la photo automobile"> -->
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">Bonjour</h4>
                     <p class="card-text">les copains</p>
                 </div>
             </div>
-    </div>
-    
-    
+        </div>
+
+
         <div class="ligne-bas"></div>
 
     </section>
@@ -153,16 +200,16 @@
 
         <div class="equipe">
             <h2>Chaque Mouvement doit raconter quelue chose.</h2>
-            <!-- <p>Un bouton réagit. Une suit sa trajectoire. un indicateur rend compréhensible. Le reste put rester calme</p> -->
+            <p>Un bouton réagit. Une suit sa trajectoire. un indicateur rend compréhensible. Le reste put rester calme</p>
         </div>
 
         <div class="consignes">
             <details>
                 <summary>Votre zone de travail</summary>
-                <p>complétez les repères E1 à E8 dans    les annimation.css
-                Le HTML et la mise en page sont déjà prête</p>
+                <p>complétez les repères E1 à E8 dans les annimation.css
+                    Le HTML et la mise en page sont déjà prête</p>
             </details>
-        
+
             <div class="ligne-briefing"></div>
 
             <details>
@@ -173,23 +220,24 @@
             </details>
 
 
-            <!-- <a href="/html/missions.html">Suivre la séance et les consignes </a><a>↗</a> -->
+            <!-- <a href="/html/missions.html">Suivre la séance et les consignesa </a><a>↗</a> -->
         </div>
     </section>
-           <div class="ligne-footer"></div>
+    <div class="ligne-footer"></div>
 
     <footer>
 
-        <div class="gauche"><p>orbit / atelier css</p>
+        <div class="gauche">
+            <p>orbit / atelier css</p>
         </div>
-        <div class="centre"><p>HTML + CSS</p>
+        <div class="centre">
+            <p>HTML + CSS</p>
         </div>
         <div class="droite">
             <a href="#navbar">Retour en haut ↑</a>
-        <div>
+            <div>
 
     </footer>
 </body>
 
 </html>
-
